@@ -51,28 +51,33 @@ html {
     background-color: #ffffff00;
     .v-application {
       background-color: #ffffff00;
-      .main {
-        height: 100vh;
-        width: 100vw;
-        font-family: Cica;
+      .v-main__wrap {
         display: flex;
-        flex-direction: column;
-        .content {
-          border-style: none solid solid;
-          border-color: lightgray;
-          border-width: 1px;
-          flex-grow: 1;
-          overflow: auto;
-          &::-webkit-scrollbar-track {
-            background-color: #eee;
-          }
-          &::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-          }
-          &::-webkit-scrollbar-thumb {
-            background-color: #ccc;
-            border-radius: 30px;
+        justify-content: center;
+        align-items: center;
+        .main {
+          height: calc(100vh - 4px);
+          width: calc(100vw - 4px);
+          font-family: Cica;
+          display: flex;
+          flex-direction: column;
+          .content {
+            border-style: none solid solid;
+            border-color: lightgray;
+            border-width: 1px;
+            flex-grow: 1;
+            overflow: auto;
+            &::-webkit-scrollbar-track {
+              background-color: #eee;
+            }
+            &::-webkit-scrollbar {
+              width: 10px;
+              height: 10px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: #ccc;
+              border-radius: 30px;
+            }
           }
         }
       }
