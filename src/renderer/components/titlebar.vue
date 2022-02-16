@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     minimize() {
-      this.$sendIpc('main', 'minimize')
+      this.$sendIpc('background', 'minimize')
     },
     close() {
       window.close()

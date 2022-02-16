@@ -24,7 +24,7 @@ const listenIpc = async (listenerName, eventName, handler) => {
   ipcRenderer.on(`${listenerName}-${eventName}`, (_, args) =>
     handler(...JSON.parse(args))
   )
-  await sendIpc('main', 'listen', listenerName, eventName)
+  await sendIpc('background', 'listen', listenerName, eventName)
 }
 
 contextBridge.exposeInMainWorld('requires', {
