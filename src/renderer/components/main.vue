@@ -1,12 +1,14 @@
 <template>
-  <div class="main">abc</div>
+  <div class="main">{{ value }}</div>
 </template>
 
 <script>
 export default {
   name: 'main',
   data() {
-    return {}
+    return {
+      value: '',
+    }
   },
   props: {
     titleLeft: {
@@ -18,7 +20,9 @@ export default {
       default: 'Right',
     },
   },
-  mounted() {},
+  mounted() {
+    this.$listenIpc('main', 'commandline', (value) => this.value = value)
+  },
   methods: {},
 }
 </script>
