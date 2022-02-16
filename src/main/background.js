@@ -50,8 +50,8 @@ async function main() {
   const options = {
     width: 300,
     height: 300,
-    minWidth: 300,
-    minHeight: 300,
+    minWidth: 128,
+    minHeight: 128,
     transparent: true,
     frame: false,
     toolbar: false,
