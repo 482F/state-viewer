@@ -2,7 +2,7 @@
   "name": "state-viewer",
   "version": "0.0.0",
   "scripts": {
-    "start": "cmd.exe /c yarn run npm-run-all makedir:dist filecopy:* background:build --parallel vite:dev --race electron:start",
+    "serve": "cmd.exe /c yarn run npm-run-all makedir:dist filecopy:* background:build --parallel vite:dev --race electron:start",
     "build": "cmd.exe /c yarn run run-s clean vite:build filecopy:preload background:build electron:build",
     "install": "cmd.exe /c yarn install",
     "build:mac": "run-s clean vite:build electron:macbuild",
