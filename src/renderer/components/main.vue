@@ -1,5 +1,5 @@
 <template>
-  <div>abc</div>
+  <div class="main">abc</div>
 </template>
 
 <script>
@@ -22,3 +22,12 @@ export default {
   methods: {},
 }
 </script>
+
+<style lang="scss" scoped>
+.main {
+  --background-color: #ffffff;
+  background-color: var(--background-color);
+  height: 100%;
+  width: 100%;
+}
+</style>
