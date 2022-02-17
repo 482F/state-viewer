@@ -12,6 +12,7 @@
       <v-list-item-title v-text="name" />
       <v-list-item-subtitle v-text="body" />
     </v-list-item-header>
+    <v-icon color="black" @click="$emit('delete')">mdi-close</v-icon>
   </v-list-item>
 </template>
 
