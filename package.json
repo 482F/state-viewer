@@ -47,6 +47,9 @@
     "productName": "state-viewer",
     "files": [
       "dist/**/*"
-    ]
+    ],
+    "win": {
+      "icon": "public/icon.png"
+    }
   }
 }
