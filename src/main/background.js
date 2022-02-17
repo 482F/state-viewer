@@ -118,6 +118,7 @@ async function main() {
   )
 
   const mainWin = await utls.createWindow(options, menuItems, 'Main')
+  mainWin.setAlwaysOnTop(true, 'screen-saver')
   mainWin.on('close', () => {
     const position = mainWin.getPosition()
     const size = mainWin.getSize()
