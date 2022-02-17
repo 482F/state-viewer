@@ -1,5 +1,10 @@
 <template>
-  <v-list-item link class="f-item">
+  <v-list-item
+    class="f-item"
+    :style="{ '--background-color': backgroundColor }"
+    :color="color"
+    link
+  >
     <v-list-item-avatar left>
       <v-icon :icon="icon" />
     </v-list-item-avatar>
@@ -26,12 +31,22 @@ export default {
       type: String,
       default: '',
     },
+    color: {
+      type: String,
+      default: 'black',
+    },
+    backgroundColor: {
+      type: String,
+      default: '#ffffff00',
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .f-item {
+  --background-color: #ffffff00;
+  background-color: var(--background-color);
   padding: 4px 8px !important;
   user-select: none;
   .v-list-item-avatar {
@@ -42,8 +57,8 @@ export default {
     flex-shrink: 0;
   }
   ::v-deep .v-list-item-header {
-    > .v-list-item-title{
-    white-space: unset;
+    > .v-list-item-title {
+      white-space: unset;
     }
     > .v-list-item-subtitle {
       overflow-wrap: anywhere;
