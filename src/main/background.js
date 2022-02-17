@@ -79,6 +79,7 @@ async function main() {
     frame: false,
     toolbar: false,
     hasShadow: false,
+    alwaysOnTop: true,
   }
   const menuItems = [
     {
