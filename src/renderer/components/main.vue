@@ -1,23 +1,31 @@
 <template>
   <div class="main">
-    <v-list density="compact">
-      <item v-for="(item, i) in items" :key="i" v-bind="item" />
+    <v-list class="item" density="compact">
+      <draggable v-model="items" v-bind="draggableOptions" item-key="name">
+        <template #item="{ element }">
+          <div @dragstart="dragStart">
+            <item v-bind="element" />
+          </div>
+        </template>
+      </draggable>
     </v-list>
   </div>
+  <div ref="ghost" />
 </template>
 
 <script>
 import Item from './item.vue'
+import Draggable from 'vuedraggable'
 
 export default {
   name: 'main',
   components: {
     Item,
+    Draggable,
   },
   data() {
     return {
       value: '',
-      selectedItem: 1,
       items: [],
     }
   },
@@ -31,10 +39,21 @@ export default {
       default: 'Right',
     },
   },
+  computed: {
+    draggableOptions() {
+      return {
+        animation: 200,
+        ghostClass: 'dragging',
+      }
+    },
+  },
   mounted() {
     this.$listenIpc('main', 'commandline', this.set)
   },
   methods: {
+    dragStart(e) {
+      e.dataTransfer.setDragImage(this.$refs.ghost, 0, 0)
+    },
     set(obj) {
       const targetItem = this.items.find((item) => item.name === obj.name)
       if (!targetItem) {
@@ -55,5 +74,10 @@ export default {
   > .v-list {
     padding: 0;
   }
+  .dragging {
+    opacity: 0.6;
+  }
 }
 </style>
+
+<style lang="scss"></style>
