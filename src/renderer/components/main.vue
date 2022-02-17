@@ -33,5 +33,8 @@ export default {
   background-color: var(--background-color);
   min-height: 100%;
   min-width: 100%;
+  > .v-list {
+    padding: 0;
+  }
 }
 </style>
