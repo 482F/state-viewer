@@ -21,9 +21,18 @@ const sendIpc = async (listenerName, eventName, ...args) => {
   )
 }
 const listenIpc = async (listenerName, eventName, handler) => {
-  ipcRenderer.on(`${listenerName}-${eventName}`, (_, args) =>
-    handler(...JSON.parse(args))
-  )
+  ipcRenderer.on(`${listenerName}-${eventName}`, async (_, args) => {
+    // TODO: 新しい項目を追加時に一度だけ下記のエラーが出るが、原因が分からないので握りつぶすように
+    try {
+      await handler(...JSON.parse(args))
+    } catch (e) {
+      if (e.message !== 'Cannot convert undefined or null to object') {
+        throw e
+      } else {
+        // 握りつぶす
+      }
+    }
+  })
   await sendIpc('background', 'listen', listenerName, eventName)
 }
 
