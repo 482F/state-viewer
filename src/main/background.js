@@ -113,7 +113,7 @@ async function main() {
     },
   }
   Object.entries(ipcHandlers).forEach(([eventName, handler]) =>
-    utls.listenIpc('main', eventName, handler)
+    utls.listenIpc('background', eventName, handler)
   )
 
   const mainWin = await utls.createWindow(options, menuItems, 'Main')
