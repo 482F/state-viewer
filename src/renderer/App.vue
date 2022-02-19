@@ -24,11 +24,9 @@ const components = {
 
 export default {
   name: 'App',
-
   components: {
     Titlebar,
   },
-
   data: () => ({
     titleLeft: 'state viewer',
     titleRight: '',
