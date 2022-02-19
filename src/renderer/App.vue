@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <v-main>
-      <div class="main">
+      <div class="electron-main">
         <titlebar :title-left="titleLeft" :title-right="titleRight" />
-        <div class="content">
+        <div class="electron-content">
           <component
             :is="components[name]"
             v-model:title-left="titleLeft"
@@ -55,13 +55,13 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
-        .main {
+        .electron-main {
           height: calc(100vh - 4px);
           width: calc(100vw - 4px);
           font-family: Cica;
           display: flex;
           flex-direction: column;
-          .content {
+          .electron-content {
             border-style: none solid solid;
             border-color: lightgray;
             border-width: 1px;
