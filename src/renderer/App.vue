@@ -2,9 +2,13 @@
   <v-app>
     <v-main>
       <div class="main">
-        <titlebar />
+        <titlebar :title-left="titleLeft" :title-right="titleRight" />
         <div class="content">
-          <component :is="components[name]"/>
+          <component
+            :is="components[name]"
+            v-model:title-left="titleLeft"
+            v-model:title-right="titleRight"
+          />
         </div>
       </div>
     </v-main>
@@ -14,10 +18,8 @@
 <script>
 import Titlebar from './components/titlebar.vue'
 import Main from './components/main.vue'
-import Sub from './components/sub.vue'
 const components = {
   Main,
-  Sub,
 }
 
 export default {
@@ -28,7 +30,8 @@ export default {
   },
 
   data: () => ({
-    //
+    titleLeft: 'state viewer',
+    titleRight: '',
   }),
   computed: {
     components() {
@@ -36,7 +39,7 @@ export default {
     },
     name() {
       return location.href.match(/(?<=#).+?$/)[0]
-    }
+    },
   },
 }
 </script>
@@ -51,6 +54,9 @@ html {
     display: flex;
     flex-direction: column;
     .content {
+      border-style: none solid solid;
+      border-color: lightgray;
+      border-width: 1px;
       flex-grow: 1;
       overflow: auto;
       &::-webkit-scrollbar-track {
