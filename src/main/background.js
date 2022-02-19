@@ -36,12 +36,6 @@ async function main() {
         app.quit()
       }
     },
-    'second-instance': (_, rawArgs) => {
-      // Windows 限定・・・
-      const args =
-        rawArgs?.[0] === 'electron.exe' ? rawArgs.slice(3) : rawArgs.slice(2)
-      console.log(args)
-    },
   }
   Object.entries(appHandlers).forEach(([eventName, handler]) =>
     app.on(eventName, handler)
@@ -131,6 +125,14 @@ async function main() {
       },
     })
   })
+
+  // mainWin に送るのでこれだけ後で app.on する必要がある
+  app.on('second-instance', (_, rawArgs) => {
+    const args =
+      rawArgs?.[0] === 'electron.exe' ? rawArgs.slice(3) : rawArgs.slice(2)
+    utls.sendIpc(mainWin, 'main', 'commandline', ...args)
+  })
+
 
   // Exit cleanly on request from parent process in development mode.
   if (utls.isDevelopment) {
