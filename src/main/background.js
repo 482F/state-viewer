@@ -10,6 +10,13 @@ async function main() {
     return
   }
 
+  // 引数がある場合は起動しない
+  console.log(process.argv)
+  if (!['.', undefined].includes(process.argv?.[1])) {
+    app.quit()
+    return
+  }
+
   const appHandlers = {
     'activate': () => {
       if (BrowserWindow.getAllWindows().length === 0) {
