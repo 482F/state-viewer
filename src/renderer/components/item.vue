@@ -49,6 +49,7 @@ export default {
   background-color: var(--background-color);
   padding: 4px 8px !important;
   user-select: none;
+  border-radius: 0;
   .v-list-item-avatar {
     display: flex;
     justify-content: center;
