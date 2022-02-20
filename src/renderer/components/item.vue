@@ -39,6 +39,15 @@ export default {
     justify-content: center;
     align-items: center;
     margin-inline-end: 8px;
+    flex-shrink: 0;
+  }
+  ::v-deep .v-list-item-header {
+    > .v-list-item-title{
+    white-space: unset;
+    }
+    > .v-list-item-subtitle {
+      overflow-wrap: anywhere;
+    }
   }
 }
 </style>
