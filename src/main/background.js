@@ -11,7 +11,6 @@ async function main() {
   }
 
   // 引数がある場合は起動しない
-  console.log(process.argv)
   if (!['.', undefined].includes(process.argv?.[1])) {
     app.quit()
     return

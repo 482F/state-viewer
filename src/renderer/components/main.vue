@@ -4,7 +4,7 @@
       <draggable v-model="items" v-bind="draggableOptions" item-key="name">
         <template #item="{ element }">
           <div @dragstart="dragStart">
-            <item v-bind="element" />
+            <item v-bind="element" @delete="deleteItem(element.name)" />
           </div>
         </template>
       </draggable>
@@ -51,6 +51,13 @@ export default {
     this.$listenIpc('main', 'commandline', this.set)
   },
   methods: {
+    deleteItem(name) {
+      const index = this.items.findIndex((item) => item.name === name)
+      if (index === -1) {
+        return
+      }
+      this.items.splice(index, 1)
+    },
     dragStart(e) {
       e.dataTransfer.setDragImage(this.$refs.ghost, 0, 0)
     },
