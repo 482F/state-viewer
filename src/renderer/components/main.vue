@@ -62,6 +62,9 @@ export default {
       e.dataTransfer.setDragImage(this.$refs.ghost, 0, 0)
     },
     set(obj) {
+      if (!obj.name) {
+        return
+      }
       const targetItem = this.items.find((item) => item.name === obj.name)
       if (!targetItem) {
         this.items.push(obj)
