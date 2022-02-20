@@ -31,7 +31,7 @@ export default {
 .main {
   --background-color: #ffffff;
   background-color: var(--background-color);
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
 }
 </style>
