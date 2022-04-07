@@ -1,6 +1,9 @@
-import { app, BrowserWindow } from 'electron'
+import { app, Menu, Tray, BrowserWindow } from 'electron'
 import utls from './main-utls.js'
 const path = require('path')
+
+// 関数内で作成するとガベージコレクトで消える
+let trayIcon = null
 
 async function main() {
   // 二重起動の防止
@@ -78,6 +81,7 @@ async function main() {
     toolbar: false,
     hasShadow: false,
     alwaysOnTop: true,
+    skipTaskbar: true,
   }
   const menuItems = [
     {
@@ -132,6 +136,16 @@ async function main() {
       },
     })
   })
+
+  trayIcon = new Tray(path.join(__dirname, 'icon.png'))
+  const contextMenu = Menu.buildFromTemplate([
+    { label: '表示', click: () => mainWin.focus() },
+    { label: '終了', click: () => mainWin.close() },
+  ])
+
+  trayIcon.setContextMenu(contextMenu)
+  trayIcon.setToolTip(app.getName())
+  trayIcon.on('click', () => mainWin.focus())
 
   // mainWin に送るのでこれだけ後で app.on する必要がある
   app.on('second-instance', (_, rawArgs) => {
