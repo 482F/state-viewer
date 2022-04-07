@@ -65,6 +65,7 @@ export default {
       if (!obj.name) {
         return
       }
+      obj.icon ??= ''
       const targetItem = this.items.find((item) => item.name === obj.name)
       if (!targetItem) {
         this.items.push(obj)

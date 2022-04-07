@@ -6,7 +6,7 @@
     link
   >
     <v-list-item-avatar left>
-      <v-icon :icon="icon" />
+      <v-icon v-if="icon" :icon="icon" />
     </v-list-item-avatar>
     <v-list-item-header>
       <v-list-item-title v-text="name" />

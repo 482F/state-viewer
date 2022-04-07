@@ -59,7 +59,6 @@ async function main() {
         width: 300,
         height: 300,
       },
-      text: 'abc',
     },
   })
 
