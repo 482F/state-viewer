@@ -151,8 +151,12 @@ async function main() {
   app.on('second-instance', (_, rawArgs) => {
     const args =
       rawArgs?.[0] === 'electron.exe' ? rawArgs.slice(3) : rawArgs.slice(2)
-    const obj = Object.fromEntries(args.map((arg) => arg.split('=')))
-    utls.sendIpc(mainWin, 'main', 'commandline', obj)
+    if (args.length === 0) {
+      mainWin.focus()
+    } else {
+      const obj = Object.fromEntries(args.map((arg) => arg.split('=')))
+      utls.sendIpc(mainWin, 'main', 'commandline', obj)
+    }
   })
 
   // Exit cleanly on request from parent process in development mode.
